@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "cover-letter-schema.json",
+  "title": "Cover Letter Recipient Schema",
+  "description": "JSON Schema for cover letter recipient data used with Typst cover letter template",
+  "type": "object",
+  "required": [
+    "name",
+    "company",
+    "address",
+    "body"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the recipient (e.g., 'Hiring Manager', 'John Smith')"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company or organization name"
+    },
+    "address": {
+      "type": "array",
+      "description": "Full address of the recipient or company",
+      "items": {
+        "type": "string",
+        "description": "Line of the address"
+      }
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "email",
+      "description": "Email address of the recipient (optional)"
+    },
+    "body": {
+      "type": "array",
+      "description": "Main body text of the cover letter",
+      "items": {
+        "type": "string",
+        "description": "Paragraph of the cover letter body"
+      }
+    }
+  }
+}
