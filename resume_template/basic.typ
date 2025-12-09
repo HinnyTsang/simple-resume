@@ -125,6 +125,7 @@
   skills: array,
 ) = {
   set align(left)
+  set align(top)
 
   make_section_title(title: title)
 
