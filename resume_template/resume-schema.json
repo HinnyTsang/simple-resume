@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resume-schema.json",
+  "title": "Resume Schema",
+  "description": "JSON Schema for resume data used with Typst resume template",
+  "type": "object",
+  "required": [
+    "title",
+    "experiences",
+    "educations",
+    "skills"
+  ],
+  "properties": {
+    "title": {
+      "type": "object",
+      "description": "Personal information and contact details",
+      "required": [
+        "firstname",
+        "lastname",
+        "headlines",
+        "email"
+      ],
+      "properties": {
+        "firstname": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "headlines": {
+          "type": "array",
+          "description": "Professional titles/headlines with optional links to experience sections",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "linkto"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Title or headline text"
+              },
+              "linkto": {
+                "type": "string",
+                "description": "Label of the experience entry to link to"
+              }
+            }
+          }
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "Phone number with country code"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "github": {
+          "type": "object",
+          "description": "GitHub profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "GitHub username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        },
+        "linkedin": {
+          "type": "object",
+          "description": "LinkedIn profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "LinkedIn username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        },
+        "homepage": {
+          "type": "object",
+          "description": "Personal website",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Full URL of the homepage"
+            },
+            "display": {
+              "type": "string",
+              "description": "Display text for the homepage link"
+            }
+          },
+          "required": [
+            "url",
+            "display"
+          ]
+        },
+        "telegram": {
+          "type": "object",
+          "description": "Telegram profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "Telegram username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      }
+    },
+    "experiences": {
+      "type": "array",
+      "description": "Work experience entries",
+      "items": {
+        "$ref": "#/$defs/experienceItem"
+      }
+    },
+    "educations": {
+      "type": "array",
+      "description": "Education entries",
+      "items": {
+        "$ref": "#/$defs/experienceItem"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "description": "List of skills",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "items"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Category of skills"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of skills in this category",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "experienceItem": {
+      "type": "object",
+      "description": "An experience or education entry",
+      "required": [
+        "organization",
+        "startdate",
+        "title",
+        "responsibilities",
+        "label"
+      ],
+      "properties": {
+        "organization": {
+          "type": "string",
+          "description": "Company or institution name"
+        },
+        "startdate": {
+          "type": "string",
+          "description": "Start date (e.g., 'Sep 2024')"
+        },
+        "enddate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "End date (e.g., 'Sep 2025') or null for current positions"
+        },
+        "title": {
+          "type": "string",
+          "description": "Job title or degree"
+        },
+        "responsibilities": {
+          "type": "array",
+          "description": "List of responsibilities or achievements (supports Typst markup)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "label": {
+          "type": "string",
+          "description": "Unique identifier for linking from headlines"
+        }
+      }
+    }
+  }
+}
