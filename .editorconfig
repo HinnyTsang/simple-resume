@@ -20,3 +20,8 @@ indent_size = 2
 [makefile]
 indent_style = tab
 indent_size = 4
+
+
+[*.typ]
+indent_style = space
+indent_size = 2
