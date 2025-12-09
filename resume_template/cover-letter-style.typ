@@ -12,7 +12,7 @@
 
 #let show_email(email: str) = {
   set text(style: "italic")
-  if email != "" {
+  if email != "" and email != none {
     link("mailto:" + email)[#email]
   } else {
     ""
