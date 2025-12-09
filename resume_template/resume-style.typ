@@ -147,15 +147,7 @@
 // Global Configurations
 // --------------------
 
-#let margin = 0.4in  // Change it if you need
 
-#set align(horizon)
-
-#set page(
-  margin: (top: margin, bottom: margin, left: margin, right: margin),
-)
-
-#set text(font: "Source Sans 3")
 
 
 // --------------------
@@ -163,54 +155,91 @@
 // --------------------
 
 
-#assert(("resume_data" in sys.inputs), message: "resume_data is required input")
-
-#let common_input = json(sys.inputs.resume_data)
-
-#let title_section = make_title_section(
-  firstname: common_input.title.firstname,
-  lastname: common_input.title.lastname,
-  headlines: common_input.title.headlines,
-  email: common_input.title.email,
-  phone_number: common_input.title.phone_number,
-  github: common_input.title.github,
-  linkedin: common_input.title.linkedin,
-  homepage: common_input.title.homepage,
-  telegram: common_input.title.telegram,
-)
-
-#let experience_section = make_experiences_section(
-  items: common_input.experiences,
-)
-
-#let education_section = make_experiences_section(
-  section_title: "Education",
-  items: common_input.educations,
-)
-
-#let skills_section = make_keywords_section(
-  title: "Skills & Technologies",
-  skills: common_input.skills,
-)
-
-#let line = make_line()
-
-
 // --------------------
 // Sections Ordering
 // --------------------
 
+#let template(
+  firstname: str,
+  lastname: str,
+  headlines: array,
+  email: str,
+  phone_number: str,
+  linkedin: (:),
+  github: (:),
+  homepage: (:),
+  telegram: (:),
+  experiences: array,
+  educations: array,
+  skills: array,
+  margin: 0.4in,
+  font: "Source Sans 3",
+  body,
+) = {
+  set align(horizon)
 
-#title_section
+  set page(
+    margin: (top: margin, bottom: margin, left: margin, right: margin),
+  )
 
-#line
+  set text(font: font)
 
-#experience_section
+  let title_section = make_title_section(
+    firstname: firstname,
+    lastname: lastname,
+    headlines: headlines,
+    email: email,
+    phone_number: phone_number,
+    github: github,
+    linkedin: linkedin,
+    homepage: homepage,
+    telegram: telegram,
+  )
 
-#line
+  let experience_section = make_experiences_section(
+    items: experiences,
+  )
 
-#skills_section
+  let education_section = make_experiences_section(
+    section_title: "Education",
+    items: educations,
+  )
 
-#line
+  let skills_section = make_keywords_section(
+    title: "Skills & Technologies",
+    skills: skills,
+  )
 
-#education_section
+  let line = make_line()
+
+  title_section
+  line
+  experience_section
+  line
+  skills_section
+  line
+  education_section
+}
+
+
+
+#assert(("resume_data" in sys.inputs), message: "resume_data is required input")
+
+#let resume_data = json("industries/de.json")
+
+
+
+#show: template.with(
+  firstname: resume_data.title.firstname,
+  lastname: resume_data.title.lastname,
+  headlines: resume_data.title.headlines,
+  email: resume_data.title.email,
+  phone_number: resume_data.title.phone_number,
+  linkedin: resume_data.title.linkedin,
+  github: resume_data.title.github,
+  homepage: resume_data.title.homepage,
+  telegram: resume_data.title.telegram,
+  experiences: resume_data.experiences,
+  educations: resume_data.educations,
+  skills: resume_data.skills,
+)
