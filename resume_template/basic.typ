@@ -55,7 +55,7 @@
   }
 
   if telegram != none {
-    contacts.push(link("https:t.me/@" + telegram.username)[#icon_telegram #telegram.username])
+    contacts.push(link("https:t.me/" + telegram.username)[#icon_telegram #telegram.username])
   }
 
   if homepage != none {
