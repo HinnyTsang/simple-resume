@@ -2,10 +2,9 @@
 
 A mimimal template of the resume.
 
-<p align="center">
-
-<img src="./assets/example.png" width="50%">
-
+<p align='center'>
+<img src="./assets/example.png" width="40%">
+<img src="./assets/example-cv.png" width="40%">
 </p>
 
 ## Usage
