@@ -1,0 +1,39 @@
+{
+  "$schema": "cover-letter-schema.json",
+  "title": {
+    "firstname": "Albert",
+    "lastname": "Einstein",
+    "headlines": [
+      {
+        "name": "Theoretical Physicist",
+        "linkto": "ias"
+      },
+      {
+        "name": "Patent Clerk",
+        "linkto": "patent"
+      }
+    ],
+    "phone_number": "+41 31 123 4567",
+    "email": "albert.einstein@example.com",
+    "github": {
+      "username": "alberteinstein"
+    },
+    "linkedin": {
+      "username": "alberteinstein"
+    },
+    "homepage": {
+      "url": "https://www.einstein-physics.org",
+      "display": "einstein-physics.org"
+    },
+    "telegram": {
+      "username": "alberteinstein"
+    }
+  },
+  "name": "Hiring Manager",
+  "company": "Google",
+  "email": "opportunities@google.com",
+  "address": [
+    "London, England, United Kingdom"
+  ],
+  "body": []
+}

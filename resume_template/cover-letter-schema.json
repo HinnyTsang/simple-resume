@@ -11,6 +11,114 @@
     "body"
   ],
   "properties": {
+    "title": {
+      "type": "object",
+      "description": "Personal information and contact details",
+      "required": [
+        "firstname",
+        "lastname",
+        "headlines",
+        "email"
+      ],
+      "properties": {
+        "firstname": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "headlines": {
+          "type": "array",
+          "description": "Professional titles/headlines with optional links to experience sections",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "linkto"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Title or headline text"
+              },
+              "linkto": {
+                "type": "string",
+                "description": "Label of the experience entry to link to"
+              }
+            }
+          }
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "Phone number with country code"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "github": {
+          "type": "object",
+          "description": "GitHub profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "GitHub username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        },
+        "linkedin": {
+          "type": "object",
+          "description": "LinkedIn profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "LinkedIn username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        },
+        "homepage": {
+          "type": "object",
+          "description": "Personal website",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Full URL of the homepage"
+            },
+            "display": {
+              "type": "string",
+              "description": "Display text for the homepage link"
+            }
+          },
+          "required": [
+            "url",
+            "display"
+          ]
+        },
+        "telegram": {
+          "type": "object",
+          "description": "Telegram profile",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "Telegram username"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      }
+    },
     "name": {
       "type": "string",
       "description": "Name of the recipient (e.g., 'Hiring Manager', 'John Smith')"

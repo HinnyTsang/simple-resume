@@ -1,3 +1,11 @@
 *.pdf
 
 *.json
+
+# Schemas: 
+!resume_template/cover-letter-schema.json
+!resume_template/resume-schema.json
+
+# Examples
+!resume_template/cover-letter-input-example.json
+!resume_template/resume-input-example.json
